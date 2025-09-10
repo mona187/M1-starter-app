@@ -1,24 +1,23 @@
 services:
   mongo:
-    image: mongo:6.0    
+    image: mongo:latest
     container_name: mongo_instance
     restart: always
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
-
   app:
     build:
       context: .
-      dockerfile: dockerfile   
+      dockerfile: dockerfile
       args:
-        PORT: ${PORT}         
+        PORT: ${PORT}
     restart: always
     container_name: cpen321_app
     environment:
       - MONGODB_URI=${MONGODB_URI}
-      - PORT=${PORT}          
+      - PORT=${PORT}
     ports:
       - "${PORT}:${PORT}"
     depends_on:
