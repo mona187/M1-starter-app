@@ -1,5 +1,3 @@
-ARG PORT
-
 FROM node:20.6-alpine
 
 WORKDIR /app
@@ -10,6 +8,9 @@ RUN npm install
 
 COPY . .
 
-EXPOSE $PORT
+# Build the TypeScript code into dist/
+RUN npm run build
+
+EXPOSE 3000
 
 CMD ["npm", "start"]

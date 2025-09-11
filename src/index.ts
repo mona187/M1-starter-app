@@ -11,10 +11,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
+
 app.use(express.json());
 
 app.use('/api', router);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date() });
+});
+
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
