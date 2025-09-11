@@ -4,6 +4,7 @@ import { z, ZodError } from 'zod';
 export const validateBody = <T>(schema: z.ZodSchema<T>): RequestHandler => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
+      console.log("MONA WAS HERE");
       const validatedData = schema.parse(req.body);
 
       req.body = validatedData;
