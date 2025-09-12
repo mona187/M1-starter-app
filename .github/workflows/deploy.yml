@@ -19,13 +19,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: |
-            package.json
-            package-lock.json
-            tsconfig.json
-            src/**
-            Dockerfile
-            docker-compose.yml
+          source: "."
           target: "/home/ubuntu/M1-starter-app"
 
       - name: Rebuild and Deploy on EC2
@@ -50,4 +44,4 @@ jobs:
 
             # Rebuild and run containers
             docker compose --env-file .env down
-            docker compose --env-file .env up -d --build
+            docker compose --env-file .env up --build -d
