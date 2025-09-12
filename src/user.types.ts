@@ -10,7 +10,7 @@ export interface IUser extends Document {
   email: string;
   name: string;
   profilePicture?: string;
-  bio?: string;
+  bio?: string | null;
   hobbies: string[];
   createdAt: Date;
   updatedAt: Date;
@@ -29,7 +29,7 @@ export const createUserSchema = z.object({
 
 export const updateProfileSchema = z.object({
   name: z.string().min(1).optional(),
-  bio: z.string().max(500).or(z.literal('')).optional(),
+  bio: z.string().max(500).optional().nullable(),
   hobbies: z
     .array(z.string())
     .refine(val => val.length === 0 || val.every(v => HOBBIES.includes(v)), {

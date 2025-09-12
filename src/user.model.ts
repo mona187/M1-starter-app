@@ -40,6 +40,7 @@ const userSchema = new Schema<IUser>(
       required: false,
       trim: true,
       maxlength: 500,
+      default:null,
     },
     hobbies: {
       type: [String],
