@@ -40,8 +40,7 @@ const userSchema = new Schema<IUser>(
       required: false,
       trim: true,
       maxlength: 500,
-    }
-    
+    },
     hobbies: {
       type: [String],
       default: [],
@@ -84,26 +83,26 @@ export class UserModel {
     }
   }
 
-  async update(
-    userId: mongoose.Types.ObjectId,
-    user: Partial<IUser>
-  ): Promise<IUser | null> {
-    try {
-      const validatedData = updateProfileSchema.parse(user);
-  
-      const updatedUser = await this.user.findByIdAndUpdate(
-        userId,
-        { $set: validatedData },   // ✅ prevents wiping out other fields
-        { new: true }
-      );
-  
-      return updatedUser;
-    } catch (error) {
-      logger.error('Error updating user:', error);
-      throw new Error('Failed to update user');
-    }
+ async update(
+  userId: mongoose.Types.ObjectId,
+  user: Partial<IUser>
+): Promise<IUser | null> {
+  try {
+    const validatedData = updateProfileSchema.parse(user);
+
+    const updatedUser = await this.user.findByIdAndUpdate(
+      userId,
+      { $set: validatedData },   // ✅ prevents wiping out other fields
+      { new: true }
+    );
+
+    return updatedUser;
+  } catch (error) {
+    logger.error('Error updating user:', error);
+    throw new Error('Failed to update user');
   }
-  
+}
+
 
   async delete(userId: mongoose.Types.ObjectId): Promise<void> {
     try {
