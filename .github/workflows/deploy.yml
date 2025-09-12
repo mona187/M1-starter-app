@@ -19,14 +19,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: |
-            package.json
-            package-lock.json
-            tsconfig.json
-            src/**
-            docker-compose.yml
-            Dockerfile
-          target: /home/ubuntu/M1-starter-app
+          source: "."
+          target: "/home/ubuntu/M1-starter-app"
 
       - name: Rebuild and Deploy on EC2
         uses: appleboy/ssh-action@master
