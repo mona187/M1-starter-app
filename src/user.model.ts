@@ -34,15 +34,15 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: false,
       trim: true,
+    },
     bio: {
       type: String,
       required: false,
       trim: true,
       maxlength: 500,
       default: null,
-      set: (v: any) => (v === "" ? null : v),   // 🔹 Converts empty string → null
-      },
-      
+      set: (v: any) => (v === "" ? null : v),   // 🔹 empty string → null
+    },
     hobbies: {
       type: [String],
       default: [],
@@ -62,6 +62,7 @@ const userSchema = new Schema<IUser>(
     timestamps: true,
   }
 );
+
 
 export class UserModel {
   private user: mongoose.Model<IUser>;
