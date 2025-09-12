@@ -29,7 +29,7 @@ export const createUserSchema = z.object({
 
 export const updateProfileSchema = z.object({
   name: z.string().min(1).optional(),
-  bio: z.string().max(500).optional(),
+  bio: z.string().max(500).or(z.literal('')).optional(),
   hobbies: z
     .array(z.string())
     .refine(val => val.length === 0 || val.every(v => HOBBIES.includes(v)), {
