@@ -89,20 +89,20 @@ export class UserModel {
   ): Promise<IUser | null> {
     try {
       const validatedData = updateProfileSchema.parse(user);
-
+  
       const updatedUser = await this.user.findByIdAndUpdate(
         userId,
-        validatedData,
-        {
-          new: true,
-        }
+        { $set: validatedData },   // ✅ prevents wiping out other fields
+        { new: true }
       );
+  
       return updatedUser;
     } catch (error) {
       logger.error('Error updating user:', error);
       throw new Error('Failed to update user');
     }
   }
+  
 
   async delete(userId: mongoose.Types.ObjectId): Promise<void> {
     try {
