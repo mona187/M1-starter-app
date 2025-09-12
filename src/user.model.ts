@@ -34,13 +34,13 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: false,
       trim: true,
-      bio: {
-        type: String,
-        required: false,
-        trim: true,
-        maxlength: 500,
-        default: null,
-        set: (v: any) => (v === "" ? null : v),   // 🔹 Converts empty string → null
+    bio: {
+      type: String,
+      required: false,
+      trim: true,
+      maxlength: 500,
+      default: null,
+      set: (v: any) => (v === "" ? null : v),   // 🔹 Converts empty string → null
       },
       
     hobbies: {
