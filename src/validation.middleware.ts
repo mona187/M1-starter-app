@@ -27,3 +27,31 @@ export const validateBody = <T>(schema: z.ZodSchema<T>): RequestHandler => {
     }
   };
 };
+
+export const validateQuery = <T>(schema: z.ZodSchema<T>): RequestHandler => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const validatedData = schema.parse(req.query);
+
+      // Store validated data in a custom property instead of overwriting req.query
+      (req as any).validatedQuery = validatedData;
+      next();
+    } catch (error) {
+      if (error instanceof ZodError) {
+        return res.status(400).json({
+          error: 'Validation error',
+          message: 'Invalid query parameters',
+          details: error.issues.map(issue => ({
+            field: issue.path.join('.'),
+            message: issue.message,
+          })),
+        });
+      }
+
+      return res.status(500).json({
+        error: 'Internal server error',
+        message: 'Validation processing failed',
+      });
+    }
+  };
+};

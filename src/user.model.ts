@@ -57,6 +57,22 @@ const userSchema = new Schema<IUser>(
           'Hobbies must be non-empty strings and must be in the available hobbies list',
       },
     },
+    savedCities: {
+      type: [{
+        id: String,
+        name: String,
+        country: String,
+        coordinates: {
+          latitude: Number,
+          longitude: Number,
+        },
+        personName: String,
+        relationship: String,
+        isFavorite: { type: Boolean, default: false },
+        addedDate: { type: Date, default: Date.now },
+      }],
+      default: [],
+    },
   },
   {
     timestamps: true,

@@ -1,6 +1,7 @@
 import mongoose, { Document } from 'mongoose';
 import z from 'zod';
 import { HOBBIES } from './hobbies';
+import { SavedCity } from './weather.types';
 
 // User model
 // ------------------------------------------------------------
@@ -12,6 +13,7 @@ export interface IUser extends Document {
   profilePicture?: string;
   bio?: string | null;
   hobbies: string[];
+  savedCities?: SavedCity[];
   createdAt: Date;
   updatedAt: Date;
 }
