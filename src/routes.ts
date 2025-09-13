@@ -16,4 +16,5 @@ router.use('/user', authenticateToken, usersRoutes);
 
 router.use('/media', authenticateToken, mediaRoutes);
 
+
 export default router;
