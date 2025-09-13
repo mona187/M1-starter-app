@@ -1,7 +1,7 @@
 import mongoose, { Document } from 'mongoose';
 import z from 'zod';
-import { HOBBIES } from './hobbies';
-import { SavedCity } from './weather.types';
+import { HOBBIES } from '../hobby/hobbies';
+import { SavedCity } from '../weather/weather.types';
 
 // User model
 // ------------------------------------------------------------

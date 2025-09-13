@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { WeatherController } from './weather.controller';
-import { validateBody, validateQuery } from './validation.middleware';
+import { validateBody, validateQuery } from '../../shared/middleware/validation.middleware';
 import { addCityRequestSchema, updateCityRequestSchema, weatherRequestSchema } from './weather.types';
-import { authenticateToken } from './auth.middleware';
+import { authenticateToken } from '../../shared/middleware/auth.middleware';
 
 const router = Router();
 const weatherController = new WeatherController();

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { IUser } from './user.types';
+import { IUser } from '../user/user.types';
 import { WeatherResponse, SavedCity, AddCityRequest, UpdateCityRequest } from './weather.types';
-import logger from './logger.util';
+import logger from '../../shared/utils/logger.util';
 
 export class WeatherService {
   private readonly OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;

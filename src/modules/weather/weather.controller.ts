@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { WeatherService } from './weather.service';
 import { addCityRequestSchema, updateCityRequestSchema, weatherRequestSchema } from './weather.types';
-import logger from './logger.util';
+import logger from '../../shared/utils/logger.util';
 
 export class WeatherController {
   private weatherService: WeatherService;

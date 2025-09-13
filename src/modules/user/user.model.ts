@@ -1,14 +1,14 @@
 import mongoose, { Schema } from 'mongoose';
 import { z } from 'zod';
 
-import { HOBBIES } from './hobbies';
+import { HOBBIES } from '../hobby/hobbies';
 import {
   createUserSchema,
   GoogleUserInfo,
   IUser,
   updateProfileSchema,
 } from './user.types';
-import logger from './logger.util';
+import logger from '../../shared/utils/logger.util';
 
 const userSchema = new Schema<IUser>(
   {

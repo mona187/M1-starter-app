@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-import { authenticateToken } from './auth.middleware';
-import authRoutes from './auth.routes';
-import hobbiesRoutes from './hobbies.routes';
-import mediaRoutes from './media.routes';
-import usersRoutes from './user.routes';
-import weatherRoutes from './weather.routes';
+import { authenticateToken } from './shared/middleware/auth.middleware';
+import authRoutes from './modules/auth/auth.routes';
+import hobbiesRoutes from './modules/hobby/hobbies.routes';
+import mediaRoutes from './modules/media/media.routes';
+import usersRoutes from './modules/user/user.routes';
+import weatherRoutes from './modules/weather/weather.routes';
 
 const router = Router();
 
